@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务五(两栏自适应布局)</title>
+	<style>
+		* { margin:0; padding:0; }
+		body { font-family: '等线'; font-size: 13px; background-color: #dedede; }
+		.fl { float:left; }
+		.fr { float: right; }
+
+		.navbar { height: 60px; background-color: #333; padding: 0 30px; color:#fff;}
+		.logo { font-size: 24px; line-height: 60px; }
+		/*横向菜单通用样式*/
+		.menu > li { display: inline-block; }
+		.menu > li > a { color:#fff; text-decoration: none; line-height: 60px;}
+		.menu > li > a:hover { color: #A1AAA9; }
+		.menu > li + li { margin-left: 5px; }
+		
+		.container { width:100%; padding:20px 0 20px 20px; overflow: auto; box-sizing: border-box; }
+		.main-wrapper { float:left; width: 100%; padding-right: 400px; box-sizing: border-box; }
+		/*main*/
+		#main { /*padding:0 30px;*/ }
+		/*侧边栏*/
+		.side { width: 360px; float:left; background-color: #fff; padding:30px; margin-left: -380px; line-height: 2; box-sizing: border-box;}
+		/*控制阴影*/
+		.article,.side { box-shadow: 4px 3px 2px #838383; }
+		/*article模块样式*/
+		.article { background-color: #fff; padding: 30px; line-height: 2; }
+		.article + .article { margin-top:30px; }
+		.article h3 { color: #666; }
+		.article .author { font-size: 12px; margin-right:5px; color:#999;}
+		.article p { text-indent: 2em; }
+		.article .normal { width: 300px; }
+
+		/*缩略图*/
+		.thumbnail { border: 1px solid #000; display: inline-block; padding: 10px; margin-right: 10px; margin-bottom: 10px; }
+		
+		.thumbnail h3 { color:#000; text-align: center; }
+		.thumbnail img { width: 200px; }
+
+		/*表格*/
+		table { width: 100%; text-align: center;border: 1px solid #000; border-collapse: collapse;}
+		table th { background-color: #333; color:#fff; border: 1px solid #ccc; }
+		table td { border: 1px solid #ccc; }
+		
+		
+		.side h3 { border-left: 3px solid #cdcdcd; padding-left: 5px;}
+
+		/*表单*/
+		form label { display: inline-block; width: 100px; text-align: right; margin-right: 20px; vertical-align: top; }
+		[type="radio"],[type="checkbox"] { vertical-align: middle; }
+		[type="radio"]+[type="radio"],[type="checkbox"]+[type="checkbox"] { margin-left: 5px; }
+		[type="text"],[type="password"] { width: 150px; }
+		::-webkit-input-placeholder { color: #999; font-family: "等线"; font-size: 12px;};/*兼容性待解决*/
+		#textarea { color:#999; font-size: 12px; }
+		/*底部*/
+		#footer { height: 60px; background-color: #333; padding: 0 30px; color: #fff; }
+		#footer>p { text-align: center; line-height: 60px; }
+		/*按钮*/
+		.btn { padding:0 10px; background-color: #fff; border: 0px solid #000; border-radius: 5px; height: 34px; font-family: "等线"; outline:none;}
+		.btn:hover { cursor: pointer; }
+		.btn.blue { background-color: #3355d0; color: #fff;}
+		.btn.blue:hover { background-color: blue; }
+	</style>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<div id="header">
+		<div class="navbar">
+			<div class="logo fl">LOGO</div>
+			<ul class="menu fr">
+				<li><a href="">导航链接一</a></li>
+				<li><a href="">导航链接二</a></li>
+				<li><a href="">导航链接三</a></li>
+				<li><a href="">导航链接四</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		<div class="main-wrapper">
+			<div id="main">
+				<div class="article">
+					<h2>文章一级标题</h2>
+					<h3>文章二级标题</h3>
+					<span class="author">文章作者</span><span class="author">文章发表时间</span>
+					<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<a href="www.baidu.com">这里有一个链接，连接到www.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落,这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。</p>
+					<img class="normal" src="images/task2-01.jpg" alt="">
+					<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<a href="www.baidu.com">这里有一个链接，连接到www.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<strong>这里有一段加粗文字，</strong>这是一个很长很长的段落，这是一个很长很长的段落,这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。</p>
+				</div>
+				<div class="article">
+					<h2>文章一级标题</h2>
+					<h3>文章二级标题</h3>
+					<span class="author">文章作者</span><span class="author">文章发表时间</span>
+					<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<a href="www.baidu.com">这里有一个链接，连接到www.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落,这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。</p>
+					<img class="normal" src="images/task2-01.jpg" alt="">
+					<ul>
+						<li>列表项目1</li>
+						<li>列表项目2</li>
+						<li>列表项目3</li>
+					</ul>
+				</div>
+				<div class="article">
+					<h2>图片</h2>
+					<div class="thumbnail">
+						<h3>好看的图片</h3>
+						<img src="images/task2-01.jpg" alt="">
+					</div>
+					<div class="thumbnail">
+						<h3>好看的图片</h3>
+						<img src="images/task2-01.jpg" alt="">
+					</div>
+					<div class="thumbnail">
+						<h3>好看的图片</h3>
+						<img src="images/task2-01.jpg" alt="">
+					</div>
+					<div class="thumbnail">
+						<h3>好看的图片</h3>
+						<img src="images/task2-01.jpg" alt="">
+					</div>
+					<div class="thumbnail">
+						<h3>好看的图片</h3>
+						<img src="images/task2-01.jpg" alt="">
+					</div>
+					<div class="thumbnail">
+						<h3>好看的图片</h3>
+						<img src="images/task2-01.jpg" alt="">
+					</div>
+				</div>
+				<div class="article">
+					<h2>最后一篇文章一级标题</h2>
+					<h3>文章二级标题</h3>
+					<span class="author">文章作者</span>
+					<span class="author">文章标题</span>
+					<table>
+						<tr>
+							<th>表头</th>
+							<th>表头</th>
+							<th>表头</th>
+						</tr>
+						<tr>
+							<td>表内容单元格</td>
+							<td>表内容单元格</td>
+							<td><a href="">操作</a></td>
+							
+						</tr>
+						<tr>
+							<td>表内容单元格</td>
+							<td>表内容单元格</td>
+							<td><a href="">操作</a></td>
+						</tr>
+						<tr>
+							<td>表内容单元格</td>
+							<td>表内容单元格</td>
+							<td><a href="">操作</a></td>
+						</tr>
+						<tr>
+							<td>总计</td>
+							<td colspan="2">1000</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="side">
+			<h3>这里以后是侧边栏，这是侧边栏的标题</h3>
+			<form action="">
+				<div class="form-group"><label for="">请输入邮箱地址</label><input type="text" placeholder="这是一个文本输入框"></div>
+				<div class="form-group"><label for="">请输入密码</label><input type="password" placeholder=""></div>
+				<div class="form-group"><label for="">请重复输入密码</label><input type="password" placeholder=""></div>
+				<div class="form-group">
+					<label for="">性别</label>
+					<input type="radio" name="gender">男
+					<input type="radio" name="gender">女
+				</div>
+				<div class="form-group">
+					<label for="">城市</label>
+					<select name="city" id="">
+						<option value="" selected="selected">北京</option>
+						<option value="">上海</option>
+						<option value="">广州</option>
+					</select>
+				</div>
+				
+				<div class="form-group">
+					<label for="">爱好</label>
+					<input type="checkbox">运动
+					<input type="checkbox">艺术
+					<input type="checkbox">科学
+				</div>
+				<div class="form-group">
+					<label for="">个人描述</label>
+					<textarea style="color:#999; font-family: '等线'; font-size: 12px; padding:5px;" name="" id="" cols="25" rows="5">这是一个多行输入框，输入您的描述
+					</textarea>
+				</div>
+				<div class="form-group">
+					<label for=""></label><input type="button" value="确认提交" class="btn blue">
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	<div id="footer">
+		<p>版权所有&copy;</p>
+	</div>
+</body>
+</html>

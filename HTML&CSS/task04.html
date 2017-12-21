@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务四 深入理解定位</title>
+	<style>
+		* { margin:0; padding:0; }
+		body { font-family: "等线"; line-height: 2; }
+		a { text-decoration: none; color:#333; }
+		a:hover { color:#7fe22e; }
+
+		.fl { float:left; }
+		.fr { float: right; }
+		/*顶部导航*/
+		.navbar { height: 60px; background-color: #e95420; padding: 0 30px; color:#fff;}
+		.logo { font-size: 24px; line-height: 60px; }
+		/*横向菜单通用样式*/
+		.menu > li { display: inline-block; }
+		.menu > li > a { color:#fff; text-decoration: none; line-height: 60px;}
+		.menu > li > a:hover { color: #A1AAA9; }
+		.menu > li + li { margin-left: 5px; }
+		
+		/*文章内容样式*/
+		h2 { font-size: 30px; }
+		h2>span { color: #e95420; font-size: 26px; }
+
+		.avatar-list { list-style: none;}
+		
+		/*表格*/
+		table { width: 100%; border: 1px solid #000; border-collapse: collapse;}
+		table th { background-color: #333; color:#fff; border: 1px solid #ccc; text-align: center; }
+		table td { border: 1px solid #ccc; padding: 5px; }
+		table ol { padding-left: 20px; }
+		/*边角修饰*/
+		.tips { position: absolute; left:0 ; top:0; color: #999; font-size: 12px; display: block;  }
+		li>img { vertical-align: middle; }/*解决图片下方有空隙的问题*/
+		.avatar-list li + li { margin-top: 20px; }
+		.avatar-list img,.avatar { width: 80px; height: 80px; }
+
+
+
+		/*双飞翼布局*/
+		/*背景色*/
+		.side-left,.side-right,.main-wrapper { background-color: #fff; }
+		/*容器*/
+		.container-2 { background-color: #eee; overflow: auto; position: relative; padding:20px; }
+		
+		.side-left,.side-right,.main-section { float:left; box-sizing: border-box; }
+		.main-section { width: 100%; background-color: #eee; padding: 0 180px 0 220px; box-sizing: border-box; }
+		.main-wrapper { width: 100%; padding:20px; overflow: auto; }
+		.side-left { margin-left: -100%; width: 200px; padding:20px; }
+		.side-right { margin-left:-120px; }
+
+		.side-right { padding:20px; }
+		.side-left img { float: left; margin-right: 20px; }
+
+		/*底部*/
+		#footer { height: 60px; background-color: #333; padding: 0 30px; color: #fff; }
+		#footer>p { text-align: center; line-height: 60px; }
+
+
+		/*测试代码*/
+		.test-container { background-color: #999; width: 200px; height: 50px; text-align: center; border: 1px solid #000; margin-bottom: 5px;}
+		.test-block { background-color: #e95420; color:#fff; padding:5px;box-sizing: border-box; }
+		.col-50 { width: 45%; float:left;}
+		.test-box { width: 80%; height: 500px; background-color: #ccc; position: relative;}
+		.test-innerbox { border: 1px solid #000; background-color: #fff;position: absolute; left:0; right:0; top:0; bottom: 0; margin:auto; width:30%; height: 30%; text-align: center; }
+		#modal,#mask-layer { display:none; position: fixed; left:0; right:0; top:0; bottom:0; margin:auto; }
+		.test-innerbox p {  display: inline-block; background-color: #e95420; }
+		/*遮罩层*/
+		#modal {  background-color: #fff; width: 20%; height: 25%; border: 1px solid #e95420;z-index:5000;}
+		#mask-layer { background-color: rgba(0,0,0,0.5); /*width: 100%; height: 100%;*/z-index:4999; }
+		.close { position:absolute; top:0; right:15px; line-height: 1;font-size: 28px;background-color: #eee; height: 28px;}
+		.close:hover { color:#e95420; cursor: pointer; }
+		.btn { padding:5px; background-color: #e95420; color: #fff; border-width: 0; border-radius: 5px; outline: none; }
+		.btn:hover { cursor:pointer; background-color: orange; }
+	</style>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<div id="header">
+		<div class="navbar">
+			<div class="logo fl">巫春旭的学习笔记</div>
+			<ul class="menu fr">
+				<li><a href="">导航链接一</a></li>
+				<li><a href="">导航链接二</a></li>
+				<li><a href="">导航链接三</a></li>
+				<li><a href="">导航链接四</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- 双飞翼三栏布局 -->
+	<div class="container-2">
+		<div class="main-section">
+			<div class="main-wrapper">
+				<h2>深入理解定位<span>之居中问题</span></h2>
+				<h3>水平居中</h3>
+				<table>
+					<tr>
+						<th>情形</th>
+						<th>方法</th>
+						<th>示例</th>
+					</tr>
+					<tr>
+						<td>父元素为块元素，子元素内联元素</td>
+						<td>
+							父元素设置{text-align:center}<br>
+							注意：父元素必须有宽度；<br>
+							绝对定位会导致居中失效（右图绝对定位）
+						</td>
+						<td>
+							<div class="test-container">
+								<span class="test-block " style="display: inline-block; position:absolute; " >inline-block</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>父元素和子元素都为块元素</td>
+						<td>
+							子元素{ margin:0 auto;}<br>
+							<strong>绝对定位会导致居中失效（右图绝对定位）</strong></td>
+						<td>
+							<div class="test-container">
+								<span class="test-block " style="display: block; position:absolute; margin:0 auto;" >block</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>父元素和子元素都为块元素</td>
+						<td>
+							子元素{margin:0 auto;}设置父元素相对定位，子元素绝对定位，<strong>left和right均为0，设置子元素的宽度！
+							</strong><em>不需要计算自身宽度</em></td>
+						<td>
+							<div class="test-container" style="position: relative;">
+								<span class="test-block " style="display: block; position:absolute; left:0; right:0;margin:0 auto; width: 50px;" >block</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<h3>垂直居中</h3>
+				<table>
+					<tr>
+						<th>条件</th>
+						<th>方案</th>
+						<th>示例</th>
+					</tr>
+					<tr>
+						<td>内联元素，单行，父元素高度确定</td>
+						<td>
+							行高=自身高度=父元素高度
+						</td>
+						<td>
+							<div class="test-container">
+								<span class="test-block " style=" line-height: 50px" >inline</span>
+							</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>块元素,父元素高度确定，自身高度确定</td>
+						<td>绝对定位，top:50%;margin-top:-(自身高度);</td>
+						<td>
+							<div class="test-container" style="position:relative; height: 100px;">
+								<span class="test-block " style="position:absolute;display: block; height:40px; width: 50px; top:50%;margin-top:-20px;" >block</span>
+							</div>
+						</td>
+						
+					</tr>
+					<tr>
+						<td>块元素,父元素高度确定，自身高度确定</td>
+						<td>position:absolute;display: block; width: 25%;height: 30%; left:0;top:0;bottom:0;margin:auto;</td>
+						<td>
+							<div class="test-container" style="position:relative; height: 100px;">
+								<span class="test-block " style="position:absolute;display: block; width: 25%;height: 30%; left:0;top:0;bottom:0;margin:auto;"></span>
+							</div>
+						</td>
+						
+					</tr>
+				</table>
+				
+				
+				<h3>fixed的垂直水平居中--应用场景：模态弹窗</h3>
+				<p>
+					.modal {position: fixed; left:0; right:0; top:0; bottom: 0; margin:auto; width:25%; height: 25%;}
+				</p>
+				<button class="btn" id="btn">模态弹窗</button>
+				<h3>父元素相对定位，子元素绝对定位，实现垂直水平居中(子元素高度不确定)</h3>
+				<p>
+					下面代码实现：父元素宽度可变，自身宽度和高度可变的情况下，始终居中(调整浏览器的宽度试试~)<br>
+					.test-innerbox { border: 1px solid #000; background-color: #fff;position: absolute; left:0; right:0; top:0; bottom: 0; margin:auto; width:25%; height: 25%; }
+				</p>
+				<div class="test-box">
+					<div class="test-innerbox">
+						<p>水平垂直居中</p>
+					</div>
+				</div>
+				<h3>margin易错整理</h3>
+				<ul>
+					<li>不可替代内联元素（span、a），margin-left、margin-right有效，但margin-top和margin-bottom无效</li>
+					<li>可替代内联元素（input）设置margin-top和margin-bottom有效</li>
+					<li>margin:auto;设置居中时，受绝对定位的影响！解决方法时设置left:0;right:0;并设置宽度</li>
+				</ul>
+
+				<h4>居中知识的链接</h4>
+				<ul>
+					<li><a href="http://ife.baidu.com/note/detail/id/666">菜鸟张小花之各种布局方式实现</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="side-left">
+			<img src="images/avatar.png" alt="avatar" class="avatar">头像
+		</div>
+		<div class="side-right">
+			<ul class="avatar-list">
+				<li><img src="images/avatar.png" alt=""></li>
+				<li><img src="images/avatar.png" alt=""></li>
+				<li><img src="images/avatar.png" alt=""></li>
+				<li><img src="images/avatar.png" alt=""></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div id="modal">模态弹窗<span class="close" id="modal-close">&times;</span></div>
+	<div id="mask-layer">遮罩层</div>
+	<div id="footer">
+		<p>版权所有&copy;</p>
+	</div>
+	<script>
+
+		var oModal    = document.getElementById('modal'),
+			maskLayer = document.getElementById('mask-layer'),
+			btn       = document.getElementById('btn'),
+			modalClose= document.getElementById('modal-close');
+
+		btn.onclick = function(){
+			oModal.style.display = "block";
+			maskLayer.style.display = "block";
+		}
+		//模块留在后面写
+		var modalModule = function(){
+
+		}
+		modalClose.onclick = function(){
+			oModal.style.display = "none";
+			maskLayer.style.display = "none";
+		}
+	</script>
+</body>
+</html>

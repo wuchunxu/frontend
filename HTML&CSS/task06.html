@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task6 newspaper</title>
+	<style>
+		* { padding:0; margin:0; }
+		body { background-color: #eee; }
+		/*一张白纸放在桌子上*/
+		.newspaper { width: 980px; height: 1386px; box-sizing:border-box; background-color: #fff; box-shadow: 4px 4px 3px #999; }
+		/*报纸放到桌子中间*/
+		.newspaper { margin:10px auto; }
+		/*规定白纸内容区域*/
+		.newspaper { padding:61px 44px; }
+		/*内容区*/
+		.content { width: 100%; height: 100%; border-top: 2px solid #938e8c; box-sizing:border-box; border-bottom: 1px solid #938e8c; position: relative; padding: 34px 0;}
+		/*顶部和顶部*/
+		.top-logo,
+		.top-logo>span,
+		.date,.home-link { position: absolute; font-family: "黑体"; font-size: 12px;}
+		.top-logo { width: 110px; height: 61px; background-color: #d45d5c; color: #ffffff; top: -63px; }
+		.top-logo>span {  bottom: 5px; left: 5px; }
+		.home-link,
+		.date { height: 14px; right:0;  color: #d45d5c; }
+		.date { top:-20px; }
+		.home-link { bottom: -20px; }
+		/*主要内容部分*/
+		.row { width: 100%; box-sizing: border-box; overflow-x:hidden; overflow-y: auto; }
+		.banner{  background:url("images/lap-top1.jpg"); }
+		.row-2 { padding: 40px 0;  }
+		.row-2 p { font-family: "宋体"; padding-right: 24px; font-size: 12px; line-height: 16px; color:#767777;}
+		.col-75 { background-color: #eee;float:left; width: 641px; overflow: auto; }
+		.col { float: left; box-sizing: border-box; }
+		
+		.col-40 { width: 40%; }
+		.col-30 { width: 30%; }
+
+		.banner-mask { width: 191px; height: 301px; }
+		.banner-mask.left { float: left; background-color:rgba(152,187,157,0.5); }
+		.banner-mask.right { float: right; background-color:rgba(229,183,183,0.5);}
+		
+		.about { float: right; width: 203px; height: 301px; border-top: 2px solid #d45d5c; }
+		.about h2 { text-decoration: underline; font-family: "Microsoft YaHei"; font-size: 24px; color: #000000; line-height: 40px; }
+		.about .description { font-size: 12px; color: #676767; line-height: 10px; font-family: "楷体"; font-style: italic; }
+		.about .xxl { margin-left: -17px; font-size: 116px; line-height:1.1; color: #75b86b; font-style: italic; font-family: "Microsoft YaHei";}
+		
+		.about .xxl { font-size: 116px; color: #75b86b; }
+		.about .xl { font-size: 55px; color: #cc8091; }
+		.about .sm { font-size: 21px; color: #cc8091; }
+		.about .xs { font-size: 12px; color: #c8c8c8;}
+		.l_part { float:left; }
+		.r_part { float:left; padding-top: 18px; padding-left: 5px;}
+
+		.color-title { font-size: 16px; font-weight: bold; text-decoration: underline; line-height: 2.5; }
+		.color-1 { color: #418c59; }
+		.color-2 { color: #d2994f; }
+		.color-3 { color: #cc7680; }
+
+		.row-3-left { width: 415px; background-color: #eee;}
+		.row-3-right { width: 459px; float:right; overflow: auto; }
+		.row-3 h2, .row-3 h3 { font-weight: bold; color: #11456b; font-family: "黑体"; }
+		.row-3 .leading { font-size: 72px; color: #f5e327; font-style: italic; }
+		.row-3 h2 { font-size: 42px;  }
+		.row-3 h3 { font-size: 33px; }
+
+		.row-3-left > div { margin-top: 10px; border-top:2px solid #11456b; padding-top:20px; }
+		.row-3-left p { text-indent:2em; font-size: 12px; color: #767777; font-family: "宋体"; line-height: 16px; }
+		.row-3-left p:first-child { text-indent:0; }
+		.row-3-left img { width: 167px; height: 287px; float:right; margin:10px 0 5px 5px; }
+
+		.row-3-left p { text-indent:2em; }
+		.big-first { text-align:center; font-family: '黑体'; float:left; width:60px; line-height:60px; height:60px; padding:0 15px 5px 5px;color:#f5e327; font-size: 70px; }
+		.row-3-right { overflow: auto; }
+		.row-3-right .top { height: 274px; width: 458px; background-color: #ccc; background: url("images/surface.png") 0 0 no-repeat; position: relative; box-sizing: border-box; }
+		.row-3-right .bottom { width: 458px; height: 318px; background-color: #eeeed6; margin-top: 15px; position: relative; box-sizing: border-box; }
+		.row-3-right .top .des { width: 458px; height: 61px; background-color: rgba(0,0,0,0.5); position:absolute; bottom:0; padding-left: 30px; padding-top:10px; box-sizing: border-box; }
+		.row-3-right .top .des p { border-left: 3px solid #72b16a; height: 44px; line-height: 44px;padding-left:10px; font-size: 26px; color: #fff; }
+		.row-3-right .top .des p span { font-size: 12px; font-style: italic; color:#72b16a; }
+		.row-3-right .bottom .card { width: 55%; height: 50%; position: absolute; left: 0; bottom: 0; background-color: #d45d5c; box-sizing: border-box;}
+		.row-3-right .bottom .list { padding: 35px 20px 0 44px; }
+		.row-3-right .bottom .list li { font-size: 16px; color: #5a5b5b; font-family: "宋体"; line-height: 2em; }
+		.row-3-right .bottom  .down { margin-left: 270px; padding: 46px 20px 0 0; font-size: 14px; color: #5a5b5b; font-family: "黑体"; font-style: italic; text-indent: 3em;}
+		.row-3-right .bottom .down span:first-child { text-indent: 0; position: absolute; right: 156px; top: 158px; }
+		.row-3-right .bottom .down span:last-child { text-indent:0; width: 100px;position: absolute; right:0px; top:215px; }
+		.row-3-right .bottom .down span { font-size: 72px; color: #d45d5c; font-family: "黑体"; font-style: normal; }
+		.row-3-right .bottom .card .down_l { font-size: 100px; color: #fff; font-family: "微软雅黑"; float: left;  box-sizing: border-box; padding: 0 10px; margin-top: 12px;}
+		.row-3-right .bottom .card .down_r { float: left; padding-left: 20px; border-left: 2px solid #fff; width: 150px; margin-top: 40px; height: 85px;}
+		.row-3-right .bottom .card .down_r p { font-size: 18px; color: #fff; font-style: italic; font-family: "黑体"; box-sizing: border-box; }
+		.row-3-right .bottom .card .down_r p:last-child { font-style: normal; font-size: 12px; }
+	</style>
+
+</head>
+<body>
+	<div class="newspaper">
+		<div class="content">
+			<div class="top-logo"><span>www.front-end.com</span></div>
+			<span class="date">2017.12.01</span>
+			<span class="home-link">www.front-end.com</span>
+			<div class="row">
+				<div class="banner col-75">
+					<div class="banner-mask left"></div>
+					<div class="banner-mask right"></div>
+				</div>
+				<div class="about">
+					<h2>ABOUT TECHNOLOGY</h2>
+					<p class="description">About technology About technology About technology</p>
+					<span class="xxl">700</span>
+					<div class="l_part xl">3.2</div>
+					<div class="r_part">
+						<p class="sm">CSS</p>
+						<p class="xs">csscsscssscsss</p>
+					</div>
+				</div>
+			</div>
+			<!-- 第二行 -->
+			<div class="row row-2">
+				<div class="col-75">
+					<div class="col col-40">
+						<h3 class="color-title color-1">What</h3>
+						<p>前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+					</div>
+					<div class="col col-30">
+						<h3 class="color-title color-2">When</h3>
+						<p>前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+					</div>
+					<div class="col col-30">
+						<h3 class="color-title color-3">How</h3>
+						<p>前端前端</p>
+						<p>前端前端前端前端<前端前端/p>
+						<p>前端前端前端前端</p>
+					</div>
+				</div>
+			</div>
+			<!-- 第三行 -->
+			<div class="row row-3">
+				<div class="col row-3-left">
+					<h2><span class="leading" >THE</span> TECHNOLOGE OF FRONT</h2>
+					<h3>前端技术领域</h3>
+					<div>
+						<p><span class="big-first">前</span>端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端<img src="images/lap-top2.png">端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端前端前端端前前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端端前前端端前端前端端前端前端端端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端端前端前端前端前端端前端</p>
+					</div>
+				</div>
+				<div class="col row-3-right">
+					<div class="top">
+						<div class="des">
+							<p>前端技术<span>前端技术前端技术</span></p>
+						</div>
+					</div>
+					<div class="bottom">
+						<ul class="list">
+							<li>前端前端前端前端............................<span class="li_r">前端</span></li>
+							<li>前端前端前端................................<span class="li_r">前端</span></li>
+							<li>前端前端前端前端前端........................<span class="li_r">前端</span></li>
+						</ul>
+						<p class="down">
+							<span>“</span>hello world hello world hello world hello world hello world hello world<span>”</span>
+						</p>
+						<div class="card">
+							<p class="down_l">0</p>
+							<div class="down_r">
+								<p>ONE TWO</p>
+								<p>THREE FORE FIVE</p>
+								<p>hello world hello world hello world hello</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
