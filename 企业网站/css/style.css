@@ -1,0 +1,511 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.half-width {
+  width: 50%;
+  box-sizing: border-box;
+  float: left;
+}
+
+nav {
+  width: 100%;
+  min-width: 1280px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15), 0 3px 3px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #e6e6e6;
+  height: 56px;
+  padding: 0 58px;
+}
+nav .logo {
+  float: left;
+  height: 56px;
+  line-height: 56px;
+  font-family: "微软雅黑",Sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+nav .logo a {
+  color: #124191;
+  text-decoration: none;
+}
+nav .logo:hover {
+  cursor: pointer;
+}
+nav .logo:hover a {
+  color: #1a60d5;
+}
+nav ul {
+  float: right;
+}
+nav ul li {
+  display: inline-block;
+  padding: 0 15px;
+}
+nav ul li:hover {
+  cursor: pointer;
+}
+nav ul a {
+  font-family: "微软雅黑";
+  font-size: 15px;
+  line-height: 56px;
+  text-decoration: none;
+  color: #7e7e7e;
+}
+
+.ease-border li {
+  position: relative;
+}
+.ease-border li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.5px;
+  bottom: 0;
+  left: 0;
+  background-color: #124191;
+  transform: scaleX(0);
+  transition: all .15s ease-in-out;
+}
+.ease-border li:hover:after {
+  transform: scaleX(1);
+}
+.ease-border li:hover a {
+  color: #124191;
+}
+
+.banner {
+  width: 100%;
+  min-width: 1280px;
+  margin-top: 56px;
+  height: 690px;
+  background: #eee url("../images/Hero-Phones-Charm.jpg") no-repeat 0 0;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  font-family: "Microsoft Yahei Light";
+  box-shadow: 0 3px 2px #999;
+}
+.banner .content {
+  position: absolute;
+  top: 35%;
+  left: 10%;
+}
+.banner h1 {
+  font-size: 50px;
+}
+.banner h2 {
+  font-size: 35px;
+}
+.banner a {
+  margin-top: 30px;
+  color: #fff;
+  background-color: #124191;
+  display: block;
+  width: 310px;
+  height: 66px;
+  text-decoration: none;
+  line-height: 66px;
+  text-align: center;
+  font-size: 28px;
+  transition: all 0.2s ease;
+}
+.banner a:hover {
+  background-color: #fff;
+  color: #124191;
+}
+
+.introduction {
+  width: 100%;
+  min-width: 1280px;
+  height: 600px;
+  background-color: #fff;
+  text-align: center;
+  font-family: "Microsoft Yahei Light";
+}
+.introduction h2 {
+  text-align: center;
+  padding: 30px;
+}
+.introduction .special {
+  color: #124191;
+}
+.introduction .des {
+  margin-bottom: 30px;
+}
+.introduction .card-set {
+  display: inline-block;
+}
+.introduction .card-set li {
+  width: 380px;
+  float: left;
+  background-color: #f9f6ef;
+  list-style: none;
+  box-shadow: 2px 3px 3px #999;
+  transition: all 0.3s ease-in-out;
+}
+.introduction .card-set li:hover {
+  box-shadow: 3px 4px 7px #888;
+}
+.introduction .card-set li:hover p {
+  color: #124191;
+}
+.introduction .card-set li a {
+  text-decoration: none;
+  overflow: hidden;
+}
+.introduction .card-set li h3 {
+  color: #4d5766;
+  padding: 25px 10px;
+}
+.introduction .card-set li p {
+  color: #637083;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  text-align: left;
+  line-height: 1.5;
+}
+.introduction .card-set li + li {
+  margin-left: 45px;
+}
+.introduction img {
+  width: 380px;
+  height: 240px;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 25px;
+  position: absolute;
+  z-index: 999;
+}
+
+.triangle-right {
+  border-color: transparent transparent transparent #fff;
+  border-right: 0px solid transparent;
+}
+
+.triangle-left {
+  border-color: transparent #fff transparent transparent;
+  border-left: 0px solid transparent;
+}
+
+.triangle-top {
+  border-color: transparent transparent #fff transparent;
+  border-top: 0px solid transparent;
+}
+
+.triangle-bottom {
+  border-color: #fff transparent transparent transparent;
+  border-bottom: 0px solid transparent;
+}
+
+.big-title {
+  width: 100%;
+  min-width: 1280px;
+  height: 360px;
+  background-color: #ededed;
+  text-align: center;
+  font-family: "Microsoft Yahei Light";
+}
+.big-title img {
+  width: 300px;
+  margin-top: 10px;
+}
+.big-title h2 {
+  font-size: 30px;
+  color: #a0a0a0;
+}
+.big-title .special {
+  color: #124191;
+}
+
+.activity-info {
+  width: 100%;
+  min-width: 1280px;
+  height: 340px;
+}
+
+.activity-show {
+  width: 100%;
+  min-width: 1280px;
+  height: 605px;
+}
+
+.some-detail {
+  width: 100%;
+  min-width: 1280px;
+}
+.some-detail .row-1, .some-detail .row-2 {
+  overflow: hidden;
+}
+.some-detail img {
+  transition: all 0.3s ease-in-out;
+}
+.some-detail img:hover {
+  transform: scale(1.02);
+}
+.some-detail .left_part {
+  height: 564px;
+  width: 66%;
+  background-color: #eee;
+  float: left;
+  box-sizing: border-box;
+}
+.some-detail .left_part img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+.some-detail .left_part .half-width {
+  height: 100%;
+}
+.some-detail .test {
+  width: 300px;
+  height: 300px;
+  background-color: #333;
+}
+.some-detail .right_part {
+  height: 564px;
+  width: 34%;
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  font-family: "Microsoft Yahei Light";
+}
+.some-detail .right_part img {
+  width: 100%;
+}
+.some-detail .right_part .triangle.triangle-left {
+  top: 50%;
+  margin-top: -12.5px;
+  left: -25px;
+}
+.some-detail .right_part .triangle.triangle-right {
+  top: 50%;
+  margin-top: -12.5px;
+  left: 0;
+}
+.some-detail .row-2 {
+  height: 520px;
+}
+
+.introduction-box-1 {
+  line-height: 1.5;
+  position: relative;
+  background-color: #fff;
+}
+.introduction-box-1 .content {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 40%;
+  width: 400px;
+  position: absolute;
+  font-family: "Microsoft Yahei Light";
+}
+.introduction-box-1 .title {
+  color: #124191;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  margin-top: 0;
+}
+.introduction-box-1 .text {
+  color: #999;
+  margin-bottom: 25px;
+  text-indent: 2em;
+}
+.introduction-box-1 .link {
+  width: 130px;
+  height: 35px;
+  display: block;
+  color: #124191;
+  margin: 20px auto;
+  text-align: center;
+  line-height: 32px;
+  font-family: "微软雅黑";
+  text-decoration: none;
+  border: 2px solid #124191;
+  transition: all 0.3s ease;
+}
+.introduction-box-1 .link:hover {
+  background-color: #124191;
+  color: #fff;
+}
+.introduction-box-1 .wrapper input {
+  float: left;
+  height: 40px;
+  box-sizing: border-box;
+}
+.introduction-box-1 .wrapper input::-webkit-input-placeholder {
+  color: #999;
+  font-size: 16px;
+}
+.introduction-box-1 [type="text"] {
+  width: 420px;
+}
+.introduction-box-1 [type="button"] {
+  width: 80px;
+  background-color: #717179;
+  border-width: 0;
+  color: #fff;
+  font-family: "微软雅黑";
+  font-size: 18px;
+  outline: none;
+}
+.introduction-box-1 [type="button"]:hover {
+  cursor: pointer;
+  background-color: #58585f;
+}
+.introduction-box-1 p {
+  color: #333;
+}
+
+.introduction-box-2 {
+  line-height: 1.5;
+  position: relative;
+  background-color: #124191;
+}
+.introduction-box-2 .content {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 40%;
+  width: 400px;
+  position: absolute;
+  font-family: "Microsoft Yahei Light";
+}
+.introduction-box-2 .title {
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  margin-top: 0;
+}
+.introduction-box-2 .text {
+  color: #fff;
+  margin-bottom: 25px;
+  text-indent: 2em;
+}
+.introduction-box-2 .link {
+  width: 130px;
+  height: 35px;
+  display: block;
+  color: #fff;
+  margin: 20px auto;
+  text-align: center;
+  line-height: 32px;
+  font-family: "微软雅黑";
+  text-decoration: none;
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+}
+.introduction-box-2 .link:hover {
+  background-color: #fff;
+  color: #124191;
+}
+.introduction-box-2 .wrapper input {
+  float: left;
+  height: 40px;
+  box-sizing: border-box;
+}
+.introduction-box-2 .wrapper input::-webkit-input-placeholder {
+  color: #999;
+  font-size: 16px;
+}
+.introduction-box-2 [type="text"] {
+  width: 420px;
+}
+.introduction-box-2 [type="button"] {
+  width: 80px;
+  background-color: #717179;
+  border-width: 0;
+  color: #fff;
+  font-family: "微软雅黑";
+  font-size: 18px;
+  outline: none;
+}
+.introduction-box-2 [type="button"]:hover {
+  cursor: pointer;
+  background-color: #58585f;
+}
+
+.join-us {
+  width: 100%;
+  min-width: 1280px;
+  height: 750px;
+}
+
+footer {
+  width: 100%;
+  min-width: 1280px;
+  height: 414px;
+}
+
+#contact {
+  width: 100%;
+  min-width: 1280px;
+  height: 356px;
+  background-color: #33363f;
+}
+#contact .content {
+  width: 510px;
+}
+#contact .title {
+  font-family: "等线";
+  margin-bottom: 15px;
+}
+#contact .text {
+  font-family: "宋体";
+}
+
+#copyright {
+  width: 100%;
+  min-width: 1280px;
+  height: 58px;
+  line-height: 58px;
+  text-align: center;
+  background-color: #30303a;
+  color: #fff;
+}
+
+#back-to-top {
+  z-index: 2000;
+  text-decoration: none;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: #fff;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#back-to-top .triangle.triangle-top {
+  border-width: 20px;
+  position: absolute;
+  left: 5px;
+  top: -5px;
+}
+#back-to-top:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/*# sourceMappingURL=style.css.map */

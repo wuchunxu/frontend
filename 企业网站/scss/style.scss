@@ -1,0 +1,340 @@
+@import "nav-ease-border";
+// 橙红色
+// $theme-color:#e8504f;
+//微软蓝
+// $theme-color:#0078d7;
+$theme-color:#124191;// 诺基亚蓝
+$title-color:#333333;
+$sub-title-color:#7e7e7e;
+$title-ff:"黑体";
+$nav-height:56px;
+
+@mixin page-width{
+	width: 100%;
+	min-width: 1280px;
+}
+* {
+	padding:0;
+	margin: 0;
+}
+.half-width {
+	width: 50%;
+	box-sizing:border-box;
+	float:left;
+}
+
+
+
+nav {
+	@include page-width;
+	z-index:1000;
+	background-color: rgba(255,255,255,.9);
+	box-sizing: border-box;
+	box-shadow: 0 0 10px rgba(0,0,0,.15),0 3px 3px rgba(0,0,0,.15);
+	position: fixed;
+	top:0;
+	border-bottom:1px solid #e6e6e6;
+	height: $nav-height;
+	padding:0 58px;
+	.logo {
+		float: left;
+		height: $nav-height ;
+		line-height: $nav-height;
+		font:{
+			family: "微软雅黑",Sans-serif;
+			size: 30px;
+			weight: bold;
+			
+		}
+		a {
+			color:$theme-color;
+			text-decoration: none;
+		}
+		&:hover {
+			cursor: pointer;
+			a {
+				color: lighten($theme-color,15%);
+			}
+		}
+	}
+
+	ul {
+		float: right;
+		li {
+			display: inline-block;
+			padding:0 15px;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		a {
+			font:{
+				family:"微软雅黑";
+				size:15px;
+			}
+			line-height:($nav-height);
+			text-decoration: none;
+			color:$sub-title-color;	
+		}
+	}
+}
+.ease-border {
+	@include ease-border($theme-color);
+}
+.banner {
+	@include page-width;
+	margin-top: $nav-height;
+	height: 690px;
+	background: #eee url("../images/Hero-Phones-Charm.jpg") no-repeat 0 0;
+	position: relative;
+	color: #fff;
+	overflow:hidden;
+	font-family: "Microsoft Yahei Light";
+	box-shadow: 0 3px 2px #999;
+	
+	.content {
+		position: absolute;
+		top: 35%;
+		left: 10%;
+	}
+	h1 {
+		font-size: 50px;
+	}
+	h2 {
+		font-size: 35px;
+	}
+	a{
+		margin-top:30px;
+		color: #fff;
+		background-color: $theme-color;
+		display: block;
+		width: 310px;
+		height: 66px;
+		text-decoration: none;
+		line-height: 66px;
+		text-align: center;
+		font-size: 28px;
+		transition: all 0.2s ease;
+		&:hover {
+			background-color: #fff;
+			color:$theme-color;
+		}
+	}
+}
+.introduction {
+	@include page-width;
+	height: 600px;
+	background-color: #fff;
+	text-align:center;
+	font-family: "Microsoft Yahei Light";
+	h2 {
+		text-align:center;
+		
+		padding: 30px;
+	}
+	.special {
+		color: $theme-color;
+	}
+	.des {
+		margin-bottom:30px;
+	}
+	.card-set {
+		display:inline-block;
+		li {
+			width: 380px;
+			float: left;
+			background-color: #f9f6ef;
+			list-style: none;
+			box-shadow: 2px 3px 3px #999;
+			transition: all 0.3s ease-in-out;
+			&:hover {
+				box-shadow : 3px 4px 7px #888;
+				p {
+					color: $theme-color;
+				}
+			}
+			a {
+				text-decoration:none;
+				overflow:hidden;
+			}
+			h3 {
+				color: #4d5766;
+				padding: 25px 10px;
+			}
+			p {
+				color: lighten(#4d5766,10%);
+				padding:0 20px;
+				margin-bottom:20px;
+				text-align:left;
+				line-height: 1.5;
+			}
+		}
+		li + li {
+			margin-left: 45px;
+		}
+	}
+	img {
+		width: 380px;
+		height: 240px;
+	}
+}
+
+$triangle-width:25px;
+@include triangle(#fff,$triangle-width);
+
+.big-title {
+	@include page-width;
+	height: 360px;
+	background-color: #ededed;
+	text-align:center;
+	font-family: "Microsoft Yahei Light";
+	img {
+		width: 300px;
+		margin-top: 10px;
+	}
+	h2 {
+		font-size: 30px;
+		color: #a0a0a0;
+	}
+	.special {
+		color: $theme-color;
+	}
+}
+.activity-info {
+	@include page-width;
+	height: 340px;
+}
+.activity-show {
+	@include page-width;
+	height: 605px;
+}
+.some-detail {
+	@include page-width;
+	// height: 1086px;
+	.row-1,.row-2 {
+		overflow:hidden;
+	}
+	img {
+		transition: all 0.3s ease-in-out;
+		&:hover {
+			transform:scale(1.02);
+		}
+	}
+	.left_part {
+		height: 564px;
+		width: 66%;
+		background-color: #eee;
+		float:left;
+		box-sizing:border-box;
+		img {
+			width: 100%;
+			height: 100%;
+			vertical-align:middle;
+		}
+		.half-width {
+			height: 100%;
+		}
+	}
+	.test {
+		width: 300px;
+		height: 300px;
+		background-color: #333;
+	}
+	
+	
+	.right_part {
+		height: 564px;
+		width: 34%;
+		float:left;
+		box-sizing:border-box;
+		position: relative;
+		overflow:hidden;
+		font-family: "Microsoft Yahei Light";
+		img {
+			width: 100%;
+		}
+		.triangle.triangle-left {
+			top: 50%;
+			margin-top: -($triangle-width / 2);
+			left: -$triangle-width;
+		}
+		.triangle.triangle-right {
+			top: 50%;
+			margin-top: -($triangle-width / 2);
+			left:0;
+		}
+
+	}
+	.row-2 {
+		height: 520px;
+
+	}
+	
+}
+
+.introduction-box-1 {
+	@include introduction-box(#fff,$theme-color);
+	p {
+		color: #333;
+	}
+}
+.introduction-box-2 {
+	@include introduction-box($theme-color,#fff);
+}
+.join-us {
+	@include page-width;
+	height: 750px;
+}
+footer {
+	@include page-width;
+	height: 414px;
+
+}
+#contact {
+		@include page-width;
+		height: 356px;
+		background-color: #33363f;
+		.content {
+			width: 510px;
+		}
+		.title {
+			font-family: "等线";
+			margin-bottom:15px;
+		}
+		.text {
+			font-family: "宋体";
+		}
+
+	}
+#copyright {
+	@include page-width;
+	height: 58px;
+	line-height: 58px;
+	text-align: center;
+	background-color: #30303a;
+	color:#fff;
+}
+#back-to-top {
+	z-index:2000;
+	text-decoration: none;
+	text-align:center;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	display: block;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	color: #fff;
+	border-radius: 3px;
+	background-color: rgba(0,0,0,.2);
+	.triangle.triangle-top {
+		border-width: 20px;
+		position:absolute;
+		left:5px;
+		top:-5px;
+	}
+	&:hover {
+		background-color: rgba(0,0,0,.9);
+	}
+}

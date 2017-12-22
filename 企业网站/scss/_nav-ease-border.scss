@@ -1,0 +1,133 @@
+@mixin ease-border($color:#000) {
+	li {
+		position: relative;
+
+		&:after {
+			content:"";
+			position: absolute;
+			width: 100%;
+			height: 2.5px;
+			bottom:0;
+			left:0;
+			background-color: $color;
+			transform: scaleX(0);
+			transition: all .15s ease-in-out;
+		}
+		&:hover:after {
+			transform: scaleX(1);
+		}
+		&:hover {
+			a{
+				color:$color;
+			}
+		}
+	}
+}
+
+@mixin introduction-box($background-color:#fff,$other-color:#333){
+	line-height:1.5;
+	position: relative;
+	background-color: $background-color;
+	.content {
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		margin:auto;
+		height: 40%;
+		width: 400px;
+		position: absolute;
+		font-family: "Microsoft Yahei Light";
+	}
+	.title {
+		color:$other-color;
+		text-align:center;
+		margin-top: 10px;
+		margin-bottom:25px;
+		margin-top: 0;
+	}
+	.text {
+		@if $background-color == #fff {
+			color: #999;
+		} @else {
+			color:$other-color;
+		}
+		margin-bottom: 25px;
+		text-indent: 2em;
+	}
+	.link {
+		width: 130px;
+		height: 35px;
+		display:block;
+		color:$other-color;
+		margin:20px auto;
+		text-align:center;
+		line-height:32px;
+		font-family: "微软雅黑";
+		text-decoration: none;
+		border:2px solid $other-color;
+		transition: all 0.3s ease;
+		&:hover {
+			background-color: $other-color;
+			color: $background-color;
+		}
+	}
+	.wrapper {
+		input {
+			float:left;
+			height: 40px;
+			box-sizing: border-box;
+			&::-webkit-input-placeholder {
+				color: #999;
+				font-size: 16px;
+			}
+
+		}
+	}
+
+	[type="text"] {
+		width: 420px;
+	}
+	[type="button"] {
+		width: 80px;
+		background-color: #717179;
+		border-width:0;
+		color :#fff;
+		font-family: "微软雅黑";
+		font-size: 18px;
+		outline:none;
+		&:hover {
+			cursor:pointer;
+			background-color: darken(#717179,10%);
+		}
+	}
+	
+}
+
+@mixin triangle($color:#333,$width:50px) {
+	.triangle {
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: $width;
+		position: absolute;
+		z-index: 999;
+	}
+
+	.triangle-right {
+		border-color: transparent transparent transparent $color;
+		border-right: 0px solid transparent;
+	}
+	.triangle-left {
+		border-color: transparent $color transparent transparent;
+		border-left: 0px solid transparent;
+	}
+	.triangle-top {
+		border-color: transparent transparent $color transparent;
+		border-top: 0px solid transparent;
+	}
+	.triangle-bottom {
+		border-color: $color transparent transparent transparent;
+		border-bottom: 0px solid transparent;
+	}
+}
