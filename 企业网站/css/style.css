@@ -125,7 +125,7 @@ nav ul a {
   width: 100%;
   min-width: 1280px;
   height: 600px;
-  background-color: #fff;
+  background: -webkit-linear-gradient(#eee, #fff);
   text-align: center;
   font-family: "Microsoft Yahei Light";
 }
@@ -211,21 +211,52 @@ nav ul a {
 .big-title {
   width: 100%;
   min-width: 1280px;
-  height: 360px;
-  background-color: #ededed;
+  height: 600px;
+  background: -webkit-linear-gradient(#eee, #fff);
+  background: -o-linear-gradient(#eee, #fff);
+  background: -moz-linear-gradient(#eee, #fff);
+  background: linear-gradient(#eee, #fff);
   text-align: center;
   font-family: "Microsoft Yahei Light";
 }
 .big-title img {
   width: 300px;
-  margin-top: 10px;
 }
 .big-title h2 {
   font-size: 30px;
-  color: #a0a0a0;
+  padding: 30px;
 }
 .big-title .special {
   color: #124191;
+}
+.big-title ul {
+  padding-top: 50px;
+  display: inline-block;
+  overflow: hidden;
+  text-align: left;
+}
+.big-title ul li {
+  float: left;
+  width: 280px;
+  list-style: none;
+  transition: all 0.2s ease;
+}
+.big-title ul li p {
+  padding: 5px 30px;
+}
+.big-title ul li:hover p, .big-title ul li:hover h3 {
+  color: #124191;
+}
+.big-title ul li + li p {
+  border-left: 1px solid #7e7e7e;
+}
+.big-title ul a {
+  text-decoration: none;
+  color: #7e7e7e;
+}
+.big-title ul h3 {
+  padding: 15px 30px;
+  color: #656565;
 }
 
 .activity-info {
@@ -243,6 +274,10 @@ nav ul a {
 .some-detail {
   width: 100%;
   min-width: 1280px;
+  background: -webkit-linear-gradient(#eee, #fff);
+  background: -o-linear-gradient(#eee, #fff);
+  background: -moz-linear-gradient(#eee, #fff);
+  background: linear-gradient(#eee, #fff);
 }
 .some-detail .row-1, .some-detail .row-2 {
   overflow: hidden;

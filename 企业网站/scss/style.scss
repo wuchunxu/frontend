@@ -81,6 +81,7 @@ nav {
 .ease-border {
 	@include ease-border($theme-color);
 }
+
 .banner {
 	@include page-width;
 	margin-top: $nav-height;
@@ -121,10 +122,11 @@ nav {
 		}
 	}
 }
+
 .introduction {
 	@include page-width;
 	height: 600px;
-	background-color: #fff;
+	background: -webkit-linear-gradient(#eee,#fff);
 	text-align:center;
 	font-family: "Microsoft Yahei Light";
 	h2 {
@@ -184,20 +186,57 @@ $triangle-width:25px;
 
 .big-title {
 	@include page-width;
-	height: 360px;
-	background-color: #ededed;
+	height: 600px;
+	background: -webkit-linear-gradient(#eee,#fff);
+	background: -o-linear-gradient(#eee,#fff);
+	background: -moz-linear-gradient(#eee,#fff);
+	background: linear-gradient(#eee,#fff);
 	text-align:center;
 	font-family: "Microsoft Yahei Light";
 	img {
 		width: 300px;
-		margin-top: 10px;
+		// margin-top: 10px;
 	}
 	h2 {
 		font-size: 30px;
-		color: #a0a0a0;
+		padding:30px;
+		// color: #a0a0a0;
 	}
 	.special {
 		color: $theme-color;
+	}
+	ul {
+		padding-top:50px;
+		display: inline-block;
+		overflow:hidden;
+		text-align:left;
+		li {
+			float: left;
+			width: 280px;
+			list-style:none;
+			transition: all 0.2s ease;
+			p {
+				padding: 5px 30px;
+			}
+			&:hover {
+				p,h3 {
+					color: $theme-color;
+				}
+			}
+		}
+		li + li {
+			p {
+				border-left: 1px solid $sub-title-color;
+			}
+		}
+		a {
+			text-decoration:none;
+			color: $sub-title-color;
+		}
+		h3 {
+			padding: 15px 30px;
+			color: darken($sub-title-color,10%);
+		}
 	}
 }
 .activity-info {
@@ -211,6 +250,10 @@ $triangle-width:25px;
 .some-detail {
 	@include page-width;
 	// height: 1086px;
+	background: -webkit-linear-gradient(#eee,#fff);
+	background: -o-linear-gradient(#eee,#fff);
+	background: -moz-linear-gradient(#eee,#fff);
+	background: linear-gradient(#eee,#fff);
 	.row-1,.row-2 {
 		overflow:hidden;
 	}
