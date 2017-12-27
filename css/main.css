@@ -1,0 +1,144 @@
+@charset "UTF-8";
+.container {
+  margin-top: 60px;
+  padding: 50px 20px;
+  background-color: #eee;
+  overflow: auto;
+}
+
+.main-wrapper {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #eee;
+  padding: 0 160px 20px 240px;
+}
+.main-wrapper .main {
+  background-color: #eee;
+  margin-bottom: 20px;
+}
+.main-wrapper .main .article {
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 3px 3px 3px #bbb;
+}
+.main-wrapper .main .article h2 {
+  padding: 10px 0 20px;
+}
+
+.left-side {
+  float: left;
+  width: 200px;
+  margin-left: -100%;
+  z-index: 1000;
+  background-color: red;
+}
+.left-side img {
+  float: left;
+  width: 80px;
+  height: 80px;
+}
+
+.right-side {
+  float: left;
+  width: 120px;
+  margin-left: -120px;
+  background-color: green;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "等线";
+}
+
+li {
+  list-style: none;
+}
+li a {
+  color: #f29b7d;
+}
+
+.navbar {
+  height: 60px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #e95420;
+  padding: 0 60px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+}
+.navbar .logo, .navbar .menu li {
+  color: #fff;
+  height: 60px;
+  line-height: 60px;
+  font-family: "微软雅黑";
+  box-sizing: border-box;
+}
+.navbar .logo {
+  float: left;
+  font-size: 24px;
+}
+.navbar .menu {
+  float: right;
+}
+.navbar .menu li {
+  float: left;
+  padding: 0 10px;
+}
+.navbar .menu li a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+}
+.navbar .menu li:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.list-card {
+  overflow: auto;
+}
+.list-card li {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.list-card a {
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-decoration: none;
+  display: block;
+  width: 200px;
+  background-color: #f5f5f5;
+  border: 1px solid #e95420;
+  height: 100px;
+  font-size: 20px;
+  color: #333;
+  padding: 15px 10px;
+}
+.list-card a h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.list-card a:hover {
+  background-color: #ee784e;
+  color: #fff;
+}
+
+#footer p {
+  line-height: 60px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+}
+
+/*# sourceMappingURL=main.css.map */

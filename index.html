@@ -3,103 +3,102 @@
 <head>
 	<meta charset="UTF-8">
 	<title>主页</title>
-	<style>
-		* { margin:0; padding:0; }
-		body { font-family: "等线"; line-height: 2; }
-		a { text-decoration: none; color:#40a702; }
-		a:hover { color:#333; }
-
-		.fl { float:left; }
-		.fr { float: right; }
-
-		.navbar { height: 60px; background-color: #e95420; padding: 0 30px; color:#fff;}
-		.logo { font-size: 24px; line-height: 60px; }
-		/*横向菜单通用样式*/
-		.menu > li { display: inline-block; }
-		.menu > li > a { color:#fff; text-decoration: none; line-height: 60px;}
-		.menu > li > a:hover { color: #A1AAA9; }
-		.menu > li + li { margin-left: 5px; }
-		/*公共代码*/
-		/*控制盒子的背景*/
-		.left,.right,.main { background-color: #fff; }
-		.list { padding-left:25px; }
-		/*文章内容样式*/
-		h2 { font-size: 30px; }
-		h2>span { color: #e95420; font-size: 26px; font-style:  }
-
-		/*圣杯布局核心控制*/
-		.container { padding: 20px 160px 20px 240px; background-color: #eee; overflow: auto; position: relative; margin-bottom: 20px;}
-		.left,.right,.main { float:left; box-sizing: border-box; position:relative; }
-		.left { width: 200px; margin-left: -100%; left:-220px;  }
-		.right { width: 120px; margin-left: -120px;  right:-140px; }
-		.main { width:100%; padding: 20px; }
-		/*内部样式*/
-		.left { padding: 20px; }
-		.left img { float: left; margin-right:20px;}
-		.right { padding:20px; }
-		
-		.avatar-list { list-style: none;}
-		
-		/*表格*/
-		table { width: 100%; border: 1px solid #000; border-collapse: collapse;}
-		table th { background-color: #e95420; color:#fff; border: 1px solid #ccc; text-align: center; }
-		table td { border: 1px solid #ccc; padding: 5px; }
-		table ol { padding-left: 20px; }
-		/*边角修饰*/
-		.tips { position: absolute; left:0 ; top:0; color: #999; font-size: 12px; display: block;  }
-		li>img { vertical-align: middle; }/*解决图片下方有空隙的问题*/
-		.avatar-list li + li { margin-top: 20px; }
-		.avatar-list img,.avatar { width: 80px; height: 80px; }
-
-		/*底部*/
-		#footer { height: 60px; background-color: #333; padding: 0 30px; color: #fff; }
-		#footer>p { text-align: center; line-height: 60px; }
-	</style>
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	<!-- 顶部导航 -->
-	<div id="header">
+	
 		<div class="navbar">
-			<div class="logo fl">LOGO</div>
-			<ul class="menu fr">
+			<div class="logo">FrontEnd</div>
+			<ul class="menu">
 				<li><a href="">导航链接一</a></li>
 				<li><a href="">导航链接二</a></li>
 				<li><a href="">导航链接三</a></li>
 				<li><a href="">导航链接四</a></li>
 			</ul>
 		</div>
-	</div>
+	
 
 	<!-- 圣杯布局 -->
+
 	<div class="container">
-		<h1>巫春旭的学习笔记</h1>
-		<div class="main">
-			<h2>前端知识<span>之HTML/CSS</span></h2>
-			<h3>HTML和CSS</h3>
-			<ul class="list">
-				<li><a href="HTML&CSS/task02.html">Task02-html 和 css</a></li>
-				<li><a href="HTML&CSS/task03.html">Task03-三栏式布局</a></li>
-				<li><a href="HTML&CSS/task04.html">Task04-定位之居中</a></li>
-				<li><a href="HTML&CSS/task05.html">Task05-自适应的两栏布局</a></li> 
-				<li><a href="HTML&CSS/task06.html">Task06-模拟报纸排版</a></li>
-				<li><a href="企业网站/index.html">Task07-企业官网样式布局</a></li>
-			</ul>
-			
+		<div class="main-wrapper">
+		
+			<div class="main">
+
+				<div class="article">
+					<h2>HTML/CSS</h2>
+					<ul class="list-card">
+						<li><a href="HTML&CSS/task02.html">
+						<h3>Task 02</h3>html 和 css</a></li>
+						<li><a href="HTML&CSS/task03.html"><h3>Task03</h3>三栏式布局</a></li>
+						<li><a href="HTML&CSS/task04.html"><h3>Task04</h3>定位之居中</a></li>
+						<li><a href="HTML&CSS/task05.html"><h3>Task05</h3>自适应的两栏布局</a></li> 
+						<li><a href="HTML&CSS/task06.html"><h3>Task06</h3>模拟报纸排版</a></li>
+						<li><a href="企业网站/index.html"><h3>Task07</h3>企业官网样式布局</a></li>
+					</ul>
+				</div>
+				<div class="article">
+					<h2>JavaScript</h2>
+					<h3>Javascript基础</h3>
+					<ul class="list-card">
+					<li><a href="HTML&CSS/task03.html">JavaScript算法</a></li>
+					<li><a href="https://segmentfault.com/a/1190000004620352"><h3>二叉树的遍历</h3>理解DOM迭代器</a></li>	
+					<li><a href="HTML&CSS/task04.html">DOM操作</a></li>
+					<li><a href="http://www.w3school.com.cn/jsref/jsref_obj_string.asp">String对象</a></li>
+					<li><a href="http://www.jb51.net/article/43190.htm">正则表达式整理</a></li>
+					</ul>
+				<!-- Array -->
+					<table>
+						<caption>数组的操作</caption>
+						<tr>
+							<th>操作</th>
+							<th>方法</th>
+						</tr>
+						<tr>
+							<td><a href="http://blog.csdn.net/li_001/article/details/53893167">数组遍历</a></td>
+							<td>
+								四种方法
+								<ul class="list">
+									<li>for( ; ; ){//to do}</li>
+									<li>for(var i in arr) { //todo(arr[i])}</li>
+									<li>Array.forEach(callback)<br></li>
+									<li>for( var value of arr){callback(value);}</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+					<!-- Function -->
+					<table>
+						<caption>函数</caption>
+						<tr>
+							<td>原型的中方法</td>
+							<td>
+								<ul class="list">
+									<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call">Function.prototype.call()</a></li>
+									<li><a href="">Function.prototype.apply()</a></li>
+									<li><a href="">Function.prototype.bind()</a></li>
+								</ul>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
 		</div>
-		<div class="left">
+
+		<div class="left-side">
 			<img src="HTML&CSS/images/avatar.png" alt="avatar" class="avatar">头像
 		</div>
-		<div class="right">
+		<div class="right-side">
 			<ul class="avatar-list">
 				<li><img src="images/avatar.png" alt=""></li>
 				<li><img src="images/avatar.png" alt=""></li>
 				<li><img src="images/avatar.png" alt=""></li>
 				<li><img src="images/avatar.png" alt=""></li>
 			</ul>
-			
 		</div>
 	</div>
-
 	<div id="footer">
 		<p>版权所有&copy;</p>
 	</div>
