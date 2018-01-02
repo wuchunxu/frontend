@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框</title>
+</head>
+<body>
+	<h1>两种全选和全不选的方式</h1>
+	<form action="" id="form1">
+		选择您的爱好：<br>
+		<input type="checkbox" name="hobby" value="足球">足球
+		<input type="checkbox" name="hobby" value="篮球">篮球
+		<input type="checkbox" name="hobby" value="羽毛球">羽毛球
+		<input type="checkbox" name="hobby" value="乒乓球">乒乓球
+		<br>
+		<input type="button" id="CheckAll" value="全选">
+		<input type="button" id="CheckNone" value="全不选">
+		<input type="button" id="CheckRev" value="反选">
+		<input type="button" id="submit" value="提交">
+	</form>
+	<hr>
+
+	<form action="" id="form2">
+		选择您的爱好：
+		<input type="checkbox" id="Check">全选/全不选<br>
+		<input type="checkbox" name="hobby" value="足球">足球
+		<input type="checkbox" name="hobby" value="篮球">篮球
+		<input type="checkbox" name="hobby" value="羽毛球">羽毛球
+		<input type="checkbox" name="hobby" value="乒乓球">乒乓球
+	</form>
+
+	<script src="../assets/js/jquery-3.1.1.js"></script>
+	<script>
+		//全选，全不选
+		var checkboxes1 = $('#form1').find('[name=hobby]:checkbox');
+
+		$('#CheckAll').on('click',function(){
+
+			checkboxes1.prop('checked',true);
+
+		});
+
+		$('#CheckNone').on('click',function(){
+
+			checkboxes1.prop('checked',false);
+
+		});
+
+		$("#CheckRev").on('click',function(){
+
+			checkboxes1.each(function(){
+
+				this.checked = !this.checked;
+
+			})
+		});
+		$("#submit").on('click',function(){
+
+			var str = "您选中的爱好是：\n";
+
+			$('#form1').find('[name=hobby]:checkbox:checked').each(function(){
+
+				str += $(this).val() + "\n"; //val()获取value的值
+
+			});
+
+			alert(str);
+		})
+
+		// 第二种
+		var checkboxes = $('#form2').find('[name=hobby]:checkbox');
+		
+		$("#Check").on('click',function(){
+			checkboxes.prop('checked',this.checked);//所有checkboxes的状态应与本checkbox一致
+		})
+		checkboxes.on('click',function(){
+			var flag = true;//true表示全选中了
+			checkboxes.each(function(){
+				if ( !this.checked ){
+					flag = false;
+				}
+			});
+			$("#Check").prop('checked',flag);
+		});
+
+	</script>
+</body>
+</html>

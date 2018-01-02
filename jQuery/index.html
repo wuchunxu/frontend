@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.form { width: 500px; margin-bottom: 25px; float:left; margin-right:20px;}
+		form:first-child input:focus, form:first-child textarea:focus { outline: none; }
+		.focus { border: 2px solid #f60; }
+		.form-group { padding:10px 0; }
+		.form-group label { width: 80px; display: inline-block; text-align: right; margin-right:10px; }
+		.msg_caption { padding: 10px 0; }
+		.msg_caption>span { background-color: #ccc; padding:5px; cursor: pointer;}
+		.msg_caption>span:hover { background-color: #eee; }
+		#comment { overflow: hidden; }
+	</style>
+</head>
+<body>
+	<form action="#" method="post" class="form">
+		<fieldset>
+			<legend>个人信息</legend>
+			<div class="form-group">
+				<label for="username">昵称</label>
+				<input type="text" id="username">
+			</div>
+			<div class="form-group">
+				<label for="pass">密码</label>
+				<input type="password" id="pass">
+			</div>
+			<div class="form-group">
+				<label for="msg">详细信息</label>
+				<textarea name="" id="msg" cols="30" rows="10"></textarea>
+			</div>
+		</fieldset>
+	</form>
+	
+	<form action="">
+		<div class="msg">
+			<div class="msg_caption">
+				<span class="bigger">放大</span>
+				<span class="smaller">缩小</span>
+				<span class="up">向上</span>
+				<span class="down">向下</span>
+			</div>
+			<div>
+				<textarea name="" id="comment" cols="20" rows="8">
+					我是多行文本框内容我是多行文本框内容我是多行文本框内容我是多行文本框内容我是多行文本框内容我是多行文本框内容我是多行文本框内容我是多行文本框内容我是多行文本框内容我是多行文本框内容我是多行文本框内容我是多行文本框内容
+				</textarea>
+			</div>
+		</div>
+	</form>
+	
+	<script src="../assets/js/jquery-3.1.1.js"></script>
+	<script>
+		
+		$(function(){
+
+			$("form:first-child").find(':input').focus(function(){
+				$(this).addClass('focus');
+			}).blur(function(){
+				$(this).removeClass('focus');
+			})
+
+			var $comment = $('#comment');
+			// 控制高度
+			$('.smaller').on('click',function(){
+				//textarea的高度大于100时，点击缩小时，高度减去50px
+				if( !$comment.is(":animated")){
+					if( $comment.height() >= 100 ){
+						// $comment.height( height - 50 );
+						$comment.animate({ height: "-=50" },400);
+					}
+				}
+			});
+			$('.bigger').on('click',function(){
+				if( !$comment.is(":animated")){
+					if ( $comment.height() <= 400 ){
+						// $comment.height( height + 50 );
+						$comment.animate({ height: "+=50" },400);
+					}
+				}
+			})
+			//控制滚动条
+			$('.up').on('click',function(){
+				if( !$comment.is(':animated') ){
+					$comment.animate({ scrollTop: '-=20' },400);
+				}
+			});
+			$('.down').on('click',function(){
+				if( !$comment.is(':animated') ){
+					$comment.animate({ scrollTop: '+=20' },400);
+				}
+			});
+			
+		})
+	</script>
+</body>
+</html>
