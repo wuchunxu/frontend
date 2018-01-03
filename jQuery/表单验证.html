@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+	<style>
+		label { display: inline-block; width: 80px; text-align: right; margin-right:10px; }
+		.int {
+			margin-bottom: 10px;
+		}
+		input[type='text'],input[type='password'] {
+			width: 200px;
+		}
+		input[type='submit'] {
+			margin-left:72px;
+		}
+		
+		.red { color: red; }
+		.feedback { background-color: #eee; font-size: 12px; }
+		.on_success { color: green; }
+		.on_error { color: red; }
+
+		.note {
+			color: #333;
+			font-size: 12px;
+			line-height: 2em;
+		}
+		.demo {
+			background-color: #eee;
+			border-bottom: 1px solid #333;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo">
+		<h1>表单验证Demo</h1>
+		<form action="" method="post">
+			<div class="int">
+				<label for="username">用户名</label>
+				<input type="text" id="username" class="required">
+			</div>
+			<div class="int">
+				<label for="email">邮箱</label>
+				<input type="text" id="email" class="required">
+			</div>
+			<div class="int">
+				<label for="personinfo">个人资料</label>
+				<input type="text" id="personinfo">
+			</div>
+			<div class="int">
+				<input type="submit" value="提交" id="submit">
+				<input type="reset" id="reset">
+			</div>
+		</form>
+	</div>
+	
+	<div class="note">
+		<h2>笔记</h2>
+		<ol>
+			<li>小红点提示
+				<ol>
+					<li>添加标记（class="required"）</li>
+					<li>类选择器选中</li>
+					<li>each()遍历:在它们的父元素后面添加一个标签，插入*即可，并设置class</li>
+				</ol>
+			</li>
+			<li>
+				验证表单
+				<ol>
+					<li>选中required元素，添加blur事件处理</li>
+					<li>$(this).is('selector')判断是用户名还是邮箱，分别处理</li>
+					<li>判断this.value，做出相应处理。成功提示...错误提示...</li>
+					<li>邮箱格式判断采用JavaScript正则表达式</li>
+				</ol>
+			</li>
+			<li>
+				调试
+				<ol>
+					<li>问题：每次触发事件后，都会添加反馈信息。解决：在添加之前，先删除反馈信息。（添加反馈信息时，标签用feedback类标记）</li>
+					<li>
+						用户点击提交之前，应当进行一次总体验证。选中所有required元素，用trigger()触发blur事件。<br>
+						统计错误信息数目（class包含"on_error"），若不为0，提示填写有误，‘return false’阻止表单提交；否则，提示"提交成功"。
+					</li>
+				</ol>
+			</li>
+			<li>
+				体验优化：输入时，即时提示正确/错误
+				<ol>
+					<li>keyup事件处理：用triggerHandler()触发blur事件</li>
+					<li>focus事件处理：用triggerHandler()触发blur事件</li>
+				</ol>
+			</li>
+		</ol>
+	</div>
+</body>
+	<script src="../assets/js/jquery-3.1.1.js"></script>
+	<script>
+		$(function(){
+			//首先为所有required加上*
+			var $required_input = $('form').find(':input.required');
+
+			$required_input.each(function(){
+				var $star = $('<strong class="red">*</strong>');
+				$(this).parent().append($star);
+			});
+
+			//当input失去焦点时，判断是否符合条件
+			$required_input.on('blur',function(){
+				if($(this).is('#username')){
+					var $parent = $(this).parent();
+					//判断长度是否大于6
+					if( this.value == '' || this.value.length < 6 ){
+						var errorMsg = '用户名至少6位';
+						$parent.find('.feedback').remove();
+						$parent.append('<span class="feedback on_error">'+errorMsg+'</span>');
+					}else{
+						var okMsg = '可用';
+						$parent.find('.feedback').remove();
+						$parent.append('<span class="feedback on_success">'+okMsg+'<span>');
+					}
+				}
+				if($(this).is('#email')){
+					var $parent = $(this).parent();
+
+					var emailExp = /^[a-zA-Z0-9-_]{4,16}@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
+
+					if(this.value != '' && emailExp.test(this.value)){
+						var okMsg = '可用';
+						$parent.find('.feedback').remove();
+						$parent.append('<span class="feedback on_success">'+okMsg+'</span>');
+					}else {
+						var errorMsg = '请输入正确的邮箱地址';
+						$parent.find('.feedback').remove();
+						$parent.append('<span class="feedback on_error">'+errorMsg + '</span>');
+					}
+				}
+			}).on('keyup',function(){
+				$(this).triggerHandler('blur');
+			}).on('focus',function(){
+				$(this).triggerHandler('blur');
+			})
+
+			$('#submit').on('click',function(){
+				$required_input.trigger('blur');
+				var error_num = $('form .on_error').length;
+				if( error_num > 0 ){
+					alert('信息填写有误！');
+					return false;
+				}
+				alert('提交成功');
+			});
+		})
+	</script>
+</html>

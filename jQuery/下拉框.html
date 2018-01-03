@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉框</title>
+	<style>
+		#select1,#select2 {
+			width: 100px;
+			height: 200px;
+			outline:none;
+			float:left;
+		}
+		.buttons {
+			height: 200px;
+			float:left;
+			padding-top:50px;
+			box-sizing: border-box;
+		}
+		.buttons button {
+			width: 30px;
+		}
+		p{
+			font-size: 12px;
+			color: #aaa;
+		}
+		.clear {
+			overflow: auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>下拉框应用</h1>
+
+	<div class="clear">
+		<select id="select1" multiple>
+			<option value="1">选项1</option>
+			<option value="2">选项2</option>
+			<option value="3">选项3</option>
+			<option value="4">选项4</option>
+			<option value="5">选项5</option>
+			<option value="6">选项6</option>
+			<option value="7">选项7</option>
+			<option value="8">选项8</option>
+		</select>
+		<div class="buttons">
+			<button id="add-all">&gt;|</button><br>
+			<button id="add">&gt;&gt;</button><br>
+			<button id="remove">&lt;&lt;</button><br>
+			<button id="remove-all">|&lt;</button><br>
+		</div>
+		<select id="select2" multiple>
+			
+		</select>
+	</div>
+
+	<p>&gt;|：全部选中添加到右侧</p>
+	<p>&gt;&gt;：选中添加到右侧</p>
+	<p>&lt;&lt;|：选中添加到右侧</p>
+	<p>|&lt;：全部选中添加到右侧</p>
+	<p>双击左侧选项，添加到右侧</p>
+	<p>双击右侧选项，回退到左侧</p>
+	<script src="../assets/js/jquery-3.1.1.js"></script>
+	<script>
+		$(function(){
+			//将select1选中的添加到select2中
+			$('#add').on('click',function(){
+				$('#select1').find('option:selected').appendTo('#select2');
+			});
+			$('#add-all').on('click',function(){
+				$('#select1').find('option').appendTo('#select2');
+			});
+			$('#remove').on('click',function(){
+				$('#select2').find('option:selected').appendTo('#select1');
+			});
+			$('#remove-all').on('click',function(){
+				$('#select2').find('option').appendTo('#select1');
+			});
+			$('#select1').dblclick(function(){
+				$('option:selected',this).appendTo('#select2');
+			});
+			$('#select2').on('dblclick',function(){
+				$('option:selected',this).appendTo('#select1');
+			})
+
+		})
+	</script>
+</body>
+</html>
